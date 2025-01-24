@@ -7,16 +7,21 @@
  */
 
 plugins {
-    // Apply the org.jetbrains.kotlin.jvm Plugin to add support for Kotlin.
-    alias(libs.plugins.kotlin.jvm)
-
-    // Apply the java-library plugin for API and implementation separation.
-    `java-library`
-
-    id("org.jetbrains.kotlin.plugin.assignment") version "2.1.20-Beta1"
+    kotlin("jvm") version "2.1.0"
+    kotlin("plugin.assignment") version "2.1.0"
+    kotlin("plugin.noarg") version "2.1.0"
+    kotlin("plugin.allopen") version "2.1.0"
 }
 assignment {
-  annotation("org.example.KotlinAssignmentOverloadTarget")
+  annotation("org.example.CustomAnnotation")
+}
+
+noArg {
+    annotation("org.example.CustomAnnotation")
+}
+
+allOpen {
+    annotation("org.example.CustomAnnotation")
 }
 
 repositories {
@@ -25,11 +30,6 @@ repositories {
 }
 
 dependencies {
-    // This dependency is exported to consumers, that is to say found on their compile classpath.
-    api(libs.commons.math3)
-
-    // This dependency is used internally, and not exposed to consumers on their own compile classpath.
-    implementation(libs.guava)
 }
 
 testing {
@@ -46,5 +46,13 @@ testing {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+kotlin {
+    compilerOptions {
+        extraWarnings = true
+        allWarningsAsErrors = true
+        verbose = true
     }
 }
