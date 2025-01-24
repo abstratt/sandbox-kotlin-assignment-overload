@@ -3,18 +3,10 @@
  */
 package org.example
 
-//@CustomAnnotation
-//interface ValueProtocol<T> {
-//    fun changeValue(newValue: T)
-//    fun currentValue(): T?
-//    fun get(): T
-//    fun assign(value: T)
-//}
-
 annotation class CustomAnnotation
 
 @CustomAnnotation
-class Value<T>(var internalValue: T) {
+class Value<T>(var internalValue: T? = null) {
     fun changeValue(newValue: T) {
         internalValue = newValue
     }
@@ -22,18 +14,11 @@ class Value<T>(var internalValue: T) {
     fun get(): T = internalValue!!
     fun assign(value: T) {
         println("Assigning $value")
-        this.changeValue(value)
+        changeValue(value)
     }
+
     override fun toString() = "$internalValue"
 
-}
-fun <T> Value<T>.assign(value: T) {
-    println("Assigning $value")
-    this.changeValue(value)
-}
-fun <T> Value<T>.assign(value: Value<T>) {
-    println("Assigning $value")
-    this.changeValue(value.internalValue)
 }
 
 class AlwaysValued<T>(internalValue: T) : Value<T>(internalValue)

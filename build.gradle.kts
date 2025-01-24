@@ -16,10 +16,6 @@ assignment {
   annotation("org.example.CustomAnnotation")
 }
 
-noArg {
-    annotation("org.example.CustomAnnotation")
-}
-
 allOpen {
     annotation("org.example.CustomAnnotation")
 }

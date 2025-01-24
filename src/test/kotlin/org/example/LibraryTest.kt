@@ -3,7 +3,6 @@
  */
 package org.example;
 
-import org.example.assign
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.Assertions.*
 
@@ -20,7 +19,7 @@ class LibraryTest {
     fun defaultConstructor() {
         var value = Value<Int>()
         assertEquals(null, value.currentValue())
-        //value = 30
+        value = 30
         assertEquals(30, value.currentValue())
     }
 
@@ -28,7 +27,7 @@ class LibraryTest {
     fun operator() {
         var value = Value(20)
         assertEquals(20, value.currentValue())
-        //value = 30
+        value = 30
         assertEquals(30, value.currentValue())
     }
 }
