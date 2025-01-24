@@ -12,4 +12,3 @@ plugins {
 }
 
 rootProject.name = "kotlin-assign-overload"
-include("lib")

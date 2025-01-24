@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Assertions.*
 class LibraryTest {
     @Test
     fun changeValue() {
-        val value = Value<Int>()
+        val value: ValueProtocol<Int> = Value<Int>()
         assertNull(value.currentValue())
         value.changeValue(30)
         assertEquals(30, value.currentValue())
@@ -18,8 +18,8 @@ class LibraryTest {
 
     @Test
     fun operator() {
-        var value = Value<Int>()
-        assertNull(value.currentValue())
+        var value: ValueProtocol<Int> = Value(20)
+        assertEquals(20, value.currentValue())
         value = 30
         assertEquals(30, value.currentValue())
     }
